@@ -6,7 +6,7 @@ tktk Write a short but descriptive summary of the content in this module.
 
 ## Prerequisites
 
-- tktk
+- MEN stack CRUD App
 - tktk
 - tktk
 
@@ -16,9 +16,13 @@ tktk Write a short but descriptive summary of the content in this module.
 | ------ |:----------:|:-----:| ------ |
 | [Setup](./setup/README.md)                               | -- | -- | Setting up the development environment  |
 | [Concepts](./concepts/README.md)                         | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-01/README.md) | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-02/README.md) | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-03/README.md) | -- | -- | tktk skills covered                     |
+| [Defining the Database](./defining-the-database/README.md) | -- | -- | tktk skills covered                     |
+| [API Testing](./manual-api-testing/README.md) | -- | -- | tktk skills covered                     |
+| [Create Route](./create-route/README.md) | -- | -- | tktk skills covered   
+| [Index Route](./index-route/README.md) | -- | -- | tktk skills covered   
+| [Show Route](./show-route/README.md) | -- | -- | tktk skills covered   
+| [Delete Route](./delete-route/README.md) | -- | -- | tktk skills covered   
+| [Update Route](./update-route/README.md) | -- | -- | tktk skills covered                     |
 | **Total content**                                        | -- | -- |                                         |
 
 ## Level Up content
