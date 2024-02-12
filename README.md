@@ -7,8 +7,8 @@ tktk Write a short but descriptive summary of the content in this module.
 ## Prerequisites
 
 - MEN stack CRUD App
-- tktk
-- tktk
+- Postman Setup Lab
+- MongoDB Atlas Setup Lab
 
 ## Content
 
