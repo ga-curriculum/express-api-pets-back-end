@@ -12,30 +12,22 @@ tktk Write a short but descriptive summary of the content in this module.
 
 ## Content
 
-| Lesson |  Skills |
+| Lesson | Skills |
 | ------ | ------ |
-| [Setup](./setup/README.md)                               | Setting up the development environment  |
-| [Concepts](./concepts/README.md)                         | tktk skills covered                     |
-| [Defining the Database](./defining-the-database/README.md) | tktk skills covered                     |
-| [API Testing](./manual-api-testing/README.md) | tktk skills covered                     |
-| [Create Route](./create-route/README.md) | tktk skills covered   
-| [Index Route](./index-route/README.md) | tktk skills covered   
-| [Show Route](./show-route/README.md) | tktk skills covered   
-| [Delete Route](./delete-route/README.md) | tktk skills covered   
-| [Update Route](./update-route/README.md) |  tktk skills covered                     |
+| [Setup](./setup/README.md) | Setting up the development environment |
+| [Concepts](./concepts/README.md) | tktk skills covered |
+| [Defining the Database](./defining-the-database/README.md) | tktk skills covered |
+| [API Testing](./manual-api-testing/README.md) | tktk skills covered |
+| [Create Route](./create-route/README.md) | tktk skills covered |
+| [Index Route](./index-route/README.md) | tktk skills covered |
+| [Show Route](./show-route/README.md) | tktk skills covered |
+| [Delete Route](./delete-route/README.md) | tktk skills covered |
+| [Update Route](./update-route/README.md) | tktk skills covered |
 
 
 ## References
 
 📖 [Reference Materials](./references/README.md)
-
-## Deployed sites
-
-tktk If there is not a deployed site related to this module this section and all of its content should be removed.
-
-🌐 [Live site](#tktk-deployed-app-url)
-
-🐙 [Repository](#tktk-repository-for-deployed-app)
 
 ## Internal resources
 
