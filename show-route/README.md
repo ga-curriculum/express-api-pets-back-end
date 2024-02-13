@@ -1,27 +1,27 @@
-# ![Express REST API - Index Route](./assets/hero.png)
+# ![Express REST API - Index Route](./assets/tktk-hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet, by interacting with the database, and send a JSON response to the client.
 
 ## READ - Show Route
 
-In this section, we will create a new route to find a single pet. This route will be a `GET` request to `/pets/:id`, and will return a JSON response with a single pet from the database.
+In this section, we will create a new route to find a single pet. This route will be a `GET` request to `/pets/:petId`, and will return a JSON response with a single pet from the database.
 
 We will be following these specs when building the route:
 
 - **CRUD Action:** READ
 - **Method:** `GET`
-- **Path:** `/pets/:id`
+- **Path:** `/pets/:petId`
 - **Response:** JSON
 - **Success Status Code:** 200
-- **Success Response Body:** A JSON object with the pet that matches the `id` parameter.
-- **Error Status Code:** 404
+- **Success Response Body:** A JSON object with the pet that matches the `petId` parameter.
+- **Error Status Code:** 404 || 500
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
 Let's get started! 🎉
 
 ## Create a GET Route - Show
 
-Inside of `controllers/pets.js`, create a new route to find a single pet. The **method** for this route is `GET`, and the **path** is `/pets/:id`. Use the `.get()` method on the `router` object to create the route and pass in the path and a callback function.
+Inside of `controllers/pets.js`, create a new route to find a single pet. The **method** for this route is `GET`, and the **path** is `/pets/:petId`. Use the `.get()` method on the `router` object to create the route and pass in the path and a callback function.
 
 ```js
 // controllers/pets.js
@@ -151,7 +151,7 @@ We do this because if we do not and let's say we have a database error, the clie
 
 ## tktk hat emoji You do: Test the Index Route with Postman
 
-Use Postman to test the new route. Open Postman and send a `GET` request to `http://localhost:3000/pets/<pet object id>`. Test both **success** and **error** cases.
+Use Postman to test the new route. Open Postman and send a `GET` request to `http://localhost:3000/pets/<petId>`. Test both **success** and **error** cases.
 
 - **Success:** You should receive a JSON response with the pet that matches the `petId` parameter.
 - **Error**: You should receive a JSON response with an `error` key and a message describing the error.
