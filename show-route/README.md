@@ -1,10 +1,10 @@
-# ![Express REST API - Index Route](./assets/tktk-hero.png)
+# ![Express REST API - Show Route](./assets/tktk-hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet, by interacting with the database, and send a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet by interacting with the database and send a JSON response to the client.
 
 ## READ - Show Route
 
-In this section, we will create a new route to find a single pet. This route will be a `GET` request to `/pets/:petId`, and will return a JSON response with a single pet from the database.
+In this section, we will create a new route to find a single pet. This route will be a `GET` request to `/pets/:petId`, returning a JSON response with a single pet from the database.
 
 We will be following these specs when building the route:
 
@@ -21,14 +21,14 @@ Let's get started! 🎉
 
 ## Create a GET Route - Show
 
-Inside of `controllers/pets.js`, create a new route to find a single pet. The **method** for this route is `GET`, and the **path** is `/pets/:petId`. Use the `.get()` method on the `router` object to create the route and pass in the path and a callback function.
+Inside `controllers/pets.js`, create a new route to find a single pet. The **method** for this route is `GET`, and the **path** is `/pets/:petId`. Use the `.get()` method on the `router` object to create the route and pass in the path and a callback function.
 
 ```js
 // controllers/pets.js
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    // Seting up for our code
+    // Setting up for our code
 });
 ```
 
@@ -36,7 +36,7 @@ Since we are already in the `/pets` route, we can use `/:petId` as the path. Thi
 
 ### Test the Route
 
-Before moving on we need to test this route to make sure it's working. We can do this by sending a response with a message to the client.
+Before moving on, we must test this route to ensure it works. We can do this by sending a response with a message to the client.
 
 ```js
 // controllers/pets.js
@@ -52,7 +52,7 @@ Using Postman to test the route. Open Postman and send a `GET` request to `http:
 
 ### Try - Find a Single Pet
 
-We have tested the route so let's query the database and find a single pet. We can do this by using the `.findById()` method on the `Pet` model. We will use `await` to wait for the database to return the pet. However, we need to wrap this in a `try...catch` block to handle any errors that may occur.
+We have tested the route, so let's query the database and find a single pet. We can do this using the `.findById()` method on the `Pet` model. We will use `await` to wait for the database to return the pet. However, we need to wrap this in a `try...catch` block to handle any errors that may occur.
 
 ```js
 // controllers/pets.js
@@ -69,11 +69,11 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-Just like in our test above we are using the `req.params.petId` to access the `petId` parameter from the `req.params` object. However, we have to handle for the case where the `petId` does not exist in the database. 
+Like in our test above, we use the `req.params.petId` to access the `petId` parameter from the `req.params` object. However, we have to handle cases where the `petId` does not exist in the database. 
 
-In Mongoose, if a document is not found, the `.findById()` method will return `null` but not throw an error. We need to handle this case and send a `404` status code with a message to the client.
+In Mongoose, if a document is not found, the `.findById()` method will return `null` but not throw an error. We need to handle this case and send the client a `404` status code with a message.
 
-We can do this by checking if `foundPet` is `null`, we set the status to `404` and throw a new error with the message `Pet not found`.
+We can do this by checking if `foundPet` is `null`; we set the status to `404` and throw a new error with the message `Pet not found`.
 
 ```js
 // controllers/pets.js
@@ -94,13 +94,13 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the execution of the function. We can do this by throwing a new error with the message `Pet not found`. This will be caught in the `catch` block and we can send a response to the client.
+> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the function's execution. We can do this by throwing a new error with the `Pet not found` message. This will be caught in the `catch` block, and we can send a response to the client.
 
 ## Catch - Errors
 
-We have set up a `catch` block in the `try...catch` statement and we have coded for the case where a pet is not found. However we need to handle for any other errors that might occur. 
+We have set up a `catch` block in the `try...catch` statement and coded for the case where a pet is not found. However, we need to handle any other errors that might occur. 
 
-First we want to check to see if the error we are catching is a `404` status code. If this error occurs we have already set the status code so we just need to send a response to the client.
+First, we want to see if the error we are catching is a `404` status code. If this error occurs, we have already set the status code, so we just need to send a response to the client.
 
 ```js
 // controllers/pets.js
@@ -123,7 +123,7 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-Now we need to handle for any other errors that might occur. We can do this by setting the status code to `500` and sending a response to the client with a message describing the error.
+Now, we need to handle any other errors that might occur. We can do this by setting the status code to `500` and sending a response to the client with a message describing the error.
 
 ```js
 // controllers/pets.js
@@ -147,7 +147,7 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-We do this because if we do not and let's say we have a database error, the client will receive a `200` status code with their error message. This is not good because the client can become confused and not know if they were successful or not.
+We do this because if we do not, and let's say we have a database error, the client will receive a `200` status code with their error message. This is not good because the client can become confused and not know if they were successful.
 
 ## 🎓 You do: Test the Index Route with Postman
 
@@ -156,6 +156,6 @@ Use Postman to test the new route. Open Postman and send a `GET` request to `htt
 - **Success:** You should receive a JSON response with the pet that matches the `petId` parameter.
 - **Error**: You should receive a JSON response with an `error` key and a message describing the error.
 
-To get a `petId` you can use the Index requet to find all pets and use the `id` of one of the pets.
+To get a `petId`, you can use the Index request to find all pets and use the `id` of one of the pets.
 
 > 🧠 To test the `404` Not Found case, use a `petId` that does not exist in the database. You can do this by changing the last digit of the `petId` to a number that does not exist in the database.

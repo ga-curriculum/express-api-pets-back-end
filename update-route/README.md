@@ -1,6 +1,6 @@
 # ![Express REST API - Update Route](./assets/tktk-hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to update a single pet, by interacting with the database, and send a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a new route to update a single pet by interacting with the database and send a JSON response to the client.
 
 ## UPDATE - Update Route
 
@@ -28,7 +28,7 @@ Let's create a new route to update a single pet. The **method** for this route i
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    // Seting up for our code
+    // Setting up for our code
 });
 ```
 
@@ -36,7 +36,7 @@ router.put('/:petId', async (req, res) => {
 
 ### Test the Route
 
-Before moving on we need to test this route to make sure it's working. We can do this by sending a response with a message to the client.
+Before moving on, we must test this route to ensure it works. We can do this by sending a response with a message to the client.
 
 ```js
 // controllers/pets.js
@@ -48,11 +48,11 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Using Postman to test the route. Open Postman and send a `PUT` request to `http://localhost:3000/pets/1`. You should receive a JSON response with the message `Update Route with the param 1`. If you do not receive this message, debug before moving on.
+Using Postman to test the route. Open Postman and send a `PUT` request to `http://localhost:3000/pets/1`. You should receive a JSON response with the `Update Route with the param 1` message. If you do not receive this message, debug before moving on.
 
 ### Try - Update a Single Pet
 
-We have tested the route so let's query the database and update a single pet. We can do this by using the `.findByIdAndUpdate()` method on the `Pet` model. We will use `await` to wait for the database to return the updated pet. Make sure we are still using the `try...catch` block to handle any errors that may occur.
+We have tested the route, so let's query the database and update a single pet. We can use the `.findByIdAndUpdate()` method on the `Pet` model. We will use `await` to wait for the database to return the updated pet. Make sure we are still using the `try...catch` block to handle any errors that may occur.
 
 ```js
 // controllers/pets.js
@@ -68,7 +68,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Even though we are working with the `.findByIdAndUpdate()` method this method is similar to the `.findById()` method in which both return `null` if the pet is not found in the database. We will need to handle for a `404` status code if the pet is not found in the database. Let's add this to the try block.
+Even though we are working with the `.findByIdAndUpdate()` method, this method is similar to the `.findById()` method in which both return `null` if the pet is not found in the database. We must handle a `404` status code if the pet is not in the database. Let's add this to the try block.
 
 ```js
 // controllers/pets.js
@@ -87,7 +87,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Lastly, if we were to log the varible `foundPet` to the console, we would see the original pet before it was updated. We need to add an additional argument to the `.findByIdAndUpdate()` method to return the updated pet. We can do this by adding `{ new: true }` as the third argument. Once that is added, we can send a JSON response with the updated pet.
+Lastly, if we log the variable `foundPet` to the console, we will see the original pet before it was updated. We must add an additional argument to the `.findByIdAndUpdate()` method to return the updated pet. We can add `{ new: true }` as the third argument. Once added, we can send a JSON response with the updated pet.
 
 ```js
 // controllers/pets.js
@@ -111,7 +111,7 @@ router.put('/:petId', async (req, res) => {
 
 ## Catch - Errors
 
-We have set up a `catch` block in the `try...catch` statement and we have coded for the case where a pet is not found. Let's handle for any `404` Not found errors along with making sure we are chaning the status code to `500` for any other errors that might occur.
+We have set up a `catch` block in the `try...catch` statement and coded for the case where a pet is not found. Let's handle any `404` Not found errors and make sure we are changing the status code to `500` for any other errors that might occur.
 
 ```js
 // controllers/pets.js
@@ -136,4 +136,4 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-> 🧠 Remember we have to do the `if...else` statement because if any other error occurs, we want to set the status code to `500` and send a response to the client with a message describing the error. If we do not change the status code it will remain `200` and the client might not know there was an error.
+> 🧠 Remember we have to do the `if...else` statement because if any other error occurs, we want to set the status code to `500` and respond to the client with a message describing the error. If we do not change the status code, it will remain `200`, and the client might not know there was an error.
