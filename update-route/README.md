@@ -68,7 +68,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Even though we are working with the `.findByIdAndUpdate()` method, this method is similar to the `.findById()` method in which both return `null` if the pet is not found in the database. We must handle a `404` status code if the pet is not in the database. Let's add this to the try block.
+Even though we are working with the `.findByIdAndUpdate()` method, this method is similar to the `.findById()` method in which both return `null` if the pet is not found in the database. We must handle a `404` not found error if the pet is not in the database. Let's add this to the try block.
 
 ```js
 // controllers/pets.js
@@ -77,6 +77,7 @@ Even though we are working with the `.findByIdAndUpdate()` method, this method i
 router.put('/:petId', async (req, res) => {
     try {
         const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+        // Add a check for a not found pet
         if (!foundPet) {
             res.status(404);
             throw new Error('Pet not found.');

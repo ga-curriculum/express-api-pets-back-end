@@ -64,6 +64,7 @@ We have tested the route, so let's query the database and find all pets. We can 
 // READ - GET - /pets
 router.get('/', async (req, res) => {
     try {
+        // Add query to find all pets
         const foundPets = await Pet.find();
         res.json({ pets: foundPets });
     } catch (error) {
@@ -93,7 +94,7 @@ router.get('/', async (req, res) => {
 });
 ```
 
-First, we set the status to `500` to indicate that an error has occurred. We need to change the status code from `200` to a meaninging status code if there is an error. Here, we can reach for the `500` internal server error. We are choosing `500` because the errors that would happen here are internal or errors that occur with no input from the client. Since this endpoint is not expecting any input from the client, we can assume that any errors that happen are internal.
+First, we set the status to `500` to indicate that an error has occurred. We need to change the status code from `200` to a meaningful status code if there is an error. Here, we can reach for the `500` internal server error. We are choosing `500` because the errors that would happen here are internal or errors that occur with no input from the client. Since this endpoint is not expecting any input from the client, we can assume that any errors that happen are internal.
 
 Then, inside the error we are being handed, there is a property called `message`. This is a string that describes the error that has occurred. We can use this to send a response to the client.
 

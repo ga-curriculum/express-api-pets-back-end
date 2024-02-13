@@ -27,7 +27,7 @@ Create a new route to delete a single pet. Using the above specs, create a new r
 - You will need a `try...catch` block to handle any errors that may occur.
 - You should handle a `404` status code if the pet is not in the database. Refer to the show route to see how to handle this.
 - The method `res.end()` can be chained with methods like `res.status()` to send a status code without having to use `res.json()`. Example: `res.status(204).end();`.
-- Since we are handling a `404` status code, we must handle a `500` status code. Refer to the show route to see how to handle this.
+- Make sure to set the status code to `500` and send an error message for any non `404` errors that occur.
 
 ## Test the Delete Route with Postman
 
