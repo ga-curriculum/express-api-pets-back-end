@@ -1,41 +1,33 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![[Express REST API]](./assets/tktk-hero.png)
 
 ## About
 
-tktk Write a short but descriptive summary of the content in this module.
+In this module, students will build a RESTful API using Express and MongoDB. They will learn how to create, read, update, and delete (CRUD) data from a database using the Mongoose ODM. They will also learn how to test their API using Postman.
 
 ## Prerequisites
 
 - MEN stack CRUD App
-- tktk
-- tktk
+- Postman Setup Lab
+- MongoDB Atlas Setup Lab
 
 ## Content
 
-| Lesson |  Skills |
+| Lesson | Skills |
 | ------ | ------ |
-| [Setup](./setup/README.md)                               | Setting up the development environment  |
-| [Concepts](./concepts/README.md)                         | tktk skills covered                     |
-| [Defining the Database](./defining-the-database/README.md) | tktk skills covered                     |
-| [API Testing](./manual-api-testing/README.md) | tktk skills covered                     |
-| [Create Route](./create-route/README.md) | tktk skills covered   
-| [Index Route](./index-route/README.md) | tktk skills covered   
-| [Show Route](./show-route/README.md) | tktk skills covered   
-| [Delete Route](./delete-route/README.md) | tktk skills covered   
-| [Update Route](./update-route/README.md) |  tktk skills covered                     |
+| [Setup](./setup/README.md) | Setting up the development environment |
+| [Concepts](./concepts/README.md) | tktk skills covered |
+| [Defining the Database](./defining-the-database/README.md) | tktk skills covered |
+| [API Testing](./manual-api-testing/README.md) | tktk skills covered |
+| [Create Route](./create-route/README.md) | tktk skills covered |
+| [Index Route](./index-route/README.md) | Create an index route that returns JSON |
+| [Show Route](./show-route/README.md) | Create a show route that returns JSON |
+| [Delete Route](./delete-route/README.md) | Create a delete route that returns JSON |
+| [Update Route](./update-route/README.md) | Create an update route that returns JSON |
 
 
 ## References
 
 📖 [Reference Materials](./references/README.md)
-
-## Deployed sites
-
-tktk If there is not a deployed site related to this module this section and all of its content should be removed.
-
-🌐 [Live site](#tktk-deployed-app-url)
-
-🐙 [Repository](#tktk-repository-for-deployed-app)
 
 ## Internal resources
 
