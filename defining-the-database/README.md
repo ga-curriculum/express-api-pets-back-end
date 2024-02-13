@@ -24,7 +24,7 @@ const mongoose = require('mongoose')
 ```
 
 Next we'll define the schema, which provides a consistent structure to our data. 
-In this case, our pet model will be pretty simple, with a `name` property of type `String` and an `age` property of type `Number`. We'll also specify that name is a required field, and give `age` a minimum value of 0.  
+In this case, our pet model will be pretty simple, with a `name` property of type `String`, an `age` property of type `Number`, and a `breed` property of type `String`. We'll also specify that name is a required field, and give `age` a minimum value of 0.  
 
 Here's how we'll define that in our pet.js file:
 
