@@ -136,7 +136,7 @@ Inside the `error` object we will be given if anything is caught, there is a pro
 
 ## You Do: Test the Create Route with Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `POST` request to `http://localhost:3000/pets`. Recall that our pet schema has the following restrictions: 
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `POST` request to `http://localhost:3000/pets`. Recall that our pet schema has the following specifications:  
 
 ```js
 const petSchema = mongoose.Schema({
@@ -152,7 +152,22 @@ const petSchema = mongoose.Schema({
 });
 ```
 
-Under the `Body` header, select the `raw` radio button and 
-[tktk graphic ] 
+Under the `Body` header, select `raw` and make sure the blue colored dropdown to the right is set to `JSON`. 
 
-An example would be 
+[tktk graphic of these options] 
+
+Your values will be different, but an example body would look something like this: 
+
+```json
+{
+  "name": "Daisy",
+  "age": "4",
+  "breed": "Pitbull" 
+}
+```
+
+Once you have the body composed, send a POST request to `http://localhost:3000/pets`. Test both success and error messages.
+
+- Success: You should receive a JSON response with the new pet object!
+- Error: You should receive a JSON response with an error message - most likely, that the `create()` failed due to bad form data. This message should describe the error that has occurred.
+
