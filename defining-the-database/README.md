@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - tktk Microlesson Name](./assets/hero.png)
+# ![Express REST API - Defining the Database](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an API. 
 

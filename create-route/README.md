@@ -1,4 +1,4 @@
-# ![Express REST API - Index Route](./assets/hero.png)
+# ![Express REST API - Create Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a new pet by interacting with the database and sending a JSON response to the client. 
 
