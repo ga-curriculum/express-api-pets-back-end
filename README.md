@@ -1,8 +1,8 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![[Express REST API]](./assets/tktk-hero.png)
 
 ## About
 
-tktk Write a short but descriptive summary of the content in this module.
+In this module, students will build a RESTful API using Express and MongoDB. They will learn how to create, read, update, and delete (CRUD) data from a database using the Mongoose ODM. They will also learn how to test their API using Postman.
 
 ## Prerequisites
 
@@ -19,10 +19,10 @@ tktk Write a short but descriptive summary of the content in this module.
 | [Defining the Database](./defining-the-database/README.md) | tktk skills covered |
 | [API Testing](./manual-api-testing/README.md) | tktk skills covered |
 | [Create Route](./create-route/README.md) | tktk skills covered |
-| [Index Route](./index-route/README.md) | tktk skills covered |
-| [Show Route](./show-route/README.md) | tktk skills covered |
-| [Delete Route](./delete-route/README.md) | tktk skills covered |
-| [Update Route](./update-route/README.md) | tktk skills covered |
+| [Index Route](./index-route/README.md) | Create an index route that returns JSON |
+| [Show Route](./show-route/README.md) | Create a show route that returns JSON |
+| [Delete Route](./delete-route/README.md) | Create a delete route that returns JSON |
+| [Update Route](./update-route/README.md) | Create an update route that returns JSON |
 
 
 ## References

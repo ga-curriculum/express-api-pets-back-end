@@ -16,11 +16,11 @@ We will be following these specs when building the route:
 - **Error Status Code:** 404 || 500
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
-## tktk hat emoji You do: Create a DELETE Route
+## 🎓 You do: Create a DELETE Route
 
 Create a new route to delete a single pet. Using the specs listed above, create a new route that will delete a single pet from the database.
 
-tktk light bulb emoji Hints:
+💡 Hints:
 
 - Use the `req.params` object to access the `id` parameter from the path.
 - Use the `.findByIdAndDelete()` method on the `Pet` model to delete a single pet from the database.

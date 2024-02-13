@@ -94,7 +94,7 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-> tktk book emoji Since `res.status` just sets the status of the current response object, we need a way to stop the execution of the function. We can do this by throwing a new error with the message `Pet not found`. This will be caught in the `catch` block and we can send a response to the client.
+> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the execution of the function. We can do this by throwing a new error with the message `Pet not found`. This will be caught in the `catch` block and we can send a response to the client.
 
 ## Catch - Errors
 
@@ -149,7 +149,7 @@ router.get('/:petId', async (req, res) => {
 
 We do this because if we do not and let's say we have a database error, the client will receive a `200` status code with their error message. This is not good because the client can become confused and not know if they were successful or not.
 
-## tktk hat emoji You do: Test the Index Route with Postman
+## 🎓 You do: Test the Index Route with Postman
 
 Use Postman to test the new route. Open Postman and send a `GET` request to `http://localhost:3000/pets/<petId>`. Test both **success** and **error** cases.
 
@@ -158,4 +158,4 @@ Use Postman to test the new route. Open Postman and send a `GET` request to `htt
 
 To get a `petId` you can use the Index requet to find all pets and use the `id` of one of the pets.
 
-> tktk brain emoji To test the `404` Not Found case, use a `petId` that does not exist in the database. You can do this by changing the last digit of the `petId` to a number that does not exist in the database.
+> 🧠 To test the `404` Not Found case, use a `petId` that does not exist in the database. You can do this by changing the last digit of the `petId` to a number that does not exist in the database.

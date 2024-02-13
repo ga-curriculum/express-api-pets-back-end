@@ -32,7 +32,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-> tktk brain emoji We still do not need to add `/pets` to the path because the route is already in the `/pets` route.
+> 🧠 We still do not need to add `/pets` to the path because the route is already in the `/pets` route.
 
 ### Test the Route
 
@@ -136,4 +136,4 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-> tktk brain emoji Remember we have to do the `if...else` statement because if any other error occurs, we want to set the status code to `500` and send a response to the client with a message describing the error. If we do not change the status code it will remain `200` and the client might not know there was an error.
+> 🧠 Remember we have to do the `if...else` statement because if any other error occurs, we want to set the status code to `500` and send a response to the client with a message describing the error. If we do not change the status code it will remain `200` and the client might not know there was an error.
