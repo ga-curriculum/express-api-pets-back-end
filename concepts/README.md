@@ -4,11 +4,9 @@
 
 ## REST APIs
 
-An API (application programming interface) is an interface that facilitates communication between clients and resources. 
+A web API (application programming interface) is an interface that facilitates communication between clients and resources. An API acts as an intermediary 
 
-RESTful API is an interface that two computers use to exchange information over the internet. 
-
-As you can tell, APIs have a pretty broad definition; as a result, they can also be configured in a multitude of different ways. That's why many developers adapt REST conventions when building their APIs. 
+As you can tell, APIs have a pretty broad definition; as a result, they can also be configured in a multitude of different ways. As APIs have become increasingly prevalent, various API protocols have been established to help provide users with a set of defined rules. One popular API protocol is REST. 
 
 REST, short for REpresentational State Transfer, is a guiding architectural style for web applications, focusing on the client-server relationship. It's a set of principles that simplifies how web resources are defined and addressed. 
 
