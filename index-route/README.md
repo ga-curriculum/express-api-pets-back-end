@@ -32,10 +32,6 @@ router.get('/', async (req, res) => {
 });
 ```
 
-We are using `async` at the start of the callback function to allow us to use `await` inside of the function. This will enable us to use `await` when we query the database for all pets.
-
-> 🧠 Notice how we have declared this path. We have just used `/` as the path. This is because we are already in the `/pets` route. This is a shorthand way of declaring the path. Check out `server.js` to see how we have declared the `/pets` route.
-
 ### Test the Route
 
 We must test the route before we can query the database to ensure it works. We can do this by sending a response with a message to the client.
@@ -52,32 +48,9 @@ router.get('/', async (req, res) => {
 
 Let's use Postman to test the route. Open Postman and send a `GET` request to `http://localhost:3000/pets`. You should receive a JSON response with the message `Index Route`. If you do not receive this message, debug before moving on.
 
-> 📚 If you are having trouble, check the terminal for error messages. Sometimes, it's as simple as the server is not running. 😀
-
 ### Try - Find All Pets
 
-We have tested the route, so let's query the database and find all pets. We can use the `.find()` method on the `Pet` model. We will use `await` to wait for the database to return all pets. However, we need to wrap this in a `try...catch` block to handle any errors that may occur.
-
-```js
-// controllers/pets.js
-
-// READ - GET - /pets
-router.get('/', async (req, res) => {
-    try {
-        // Add query to find all pets
-        const foundPets = await Pet.find();
-        res.json({ pets: foundPets });
-    } catch (error) {
-        // Setup for error handling
-    }
-});
-```
-
-Inside our `res.json` method, we send a JSON response with the key `pets` and the value of `foundPets`. This will send the client an array of all pets in the database.
-
-### Catch - Errors
-
-Errors can occur in several places when querying the database. We need to handle these errors and send a response to the client that is easy to read and understand. Luckily, we have already set up a `catch` block in the `try...catch` statement. We can use this to catch or sense any errors that might happen.
+We have tested the route, so let's query the database and find all pets. 
 
 ```js
 // controllers/pets.js
@@ -95,8 +68,6 @@ router.get('/', async (req, res) => {
 ```
 
 First, we set the status to `500` to indicate that an error has occurred. We need to change the status code from `200` to a meaningful status code if there is an error. Here, we can reach for the `500` internal server error. We are choosing `500` because the errors that would happen here are internal or errors that occur with no input from the client. Since this endpoint is not expecting any input from the client, we can assume that any errors that happen are internal.
-
-Then, inside the error we are being handed, there is a property called `message`. This is a string that describes the error that has occurred. We can use this to send a response to the client.
 
 > 📚 The `error` object is an instance of the built-in Error class in JavaScript. It has many valuable properties, one of them being `message`. For a complete list of Error capabilities, check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
 
