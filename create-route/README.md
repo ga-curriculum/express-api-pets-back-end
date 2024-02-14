@@ -68,6 +68,7 @@ Now we're finally ready to define a route. Use the `.post()` method on the route
 ```js
 // controllers/pets.js
 
+// CREATE - POST - /pets
 router.post('/', async (req, res) => {
 
 });
@@ -84,7 +85,7 @@ Let's test the route to ensure that it works - we can do this by sending a respo
 ```js
 // controllers/pets.js
 
-// READ - GET - /pets
+// CREATE - POST - /pets
 router.post('/', async (req, res) => {
   // Add a message to test the route
   res.json({ message: 'Create Route' })
@@ -104,6 +105,9 @@ The route works, but now we want to actually make use of it being a `POST` route
 Inside our controller function, we'll call `create()` on our `Pet` model, and pass in `req.body`. Once the `pet` is created, we'll send a JSON response with the new `pet` object. 
 
 ```js
+// controllers/pets.js
+
+// CREATE - POST - /pets
 router.post('/', async (req, res) => {
     try {
         // Create a new pet with the data from req.body
@@ -120,6 +124,9 @@ router.post('/', async (req, res) => {
 Errors can occur in several places when querying the database. We need to handle these errors and send a response to the client that is easy to read and understand. Luckily, we have already set up a catch block in the `try...catch` statement. We can use this to catch any errors that might happen:
 
 ```js
+// controllers/pets.js
+
+// CREATE - POST - /pets
 router.post('/', async (req, res) => {
     try {
         const pet = await Pet.create(req.body);

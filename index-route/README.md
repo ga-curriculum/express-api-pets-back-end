@@ -69,8 +69,6 @@ router.get('/', async (req, res) => {
 
 First, we set the status to `500` to indicate that an error has occurred. We need to change the status code from `200` to a meaningful status code if there is an error. Here, we can reach for the `500` internal server error. We are choosing `500` because the errors that would happen here are internal or errors that occur with no input from the client. Since this endpoint is not expecting any input from the client, we can assume that any errors that happen are internal.
 
-> 📚 The `error` object is an instance of the built-in Error class in JavaScript. It has many valuable properties, one of them being `message`. For a complete list of Error capabilities, check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
-
 ## 🎓 You do: Test the Index Route with Postman
 
 Now that we have finished the route let's test it with Postman. Send a `GET` request to `http://localhost:3000/pets`. Test both **success** and **error** messages.

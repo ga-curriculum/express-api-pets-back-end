@@ -1,6 +1,6 @@
 # ![Express REST API - Delete Route](./assets/tktk-hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to delete a single pet by interacting with the database and send a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a new route to delete a single pet by interacting with the database and sending a JSON response to the client.
 
 ## DELETE - Delete Route
 
@@ -31,29 +31,29 @@ Create a new route to delete a single pet. Using the above specs, create a new r
 
 ## Test the Delete Route with Postman
 
-We have created the route, so let's test it to ensure it works. We can do this by sending a `DELETE` request to the route using Postman.
+We have created the route, so let's test it to ensure it works. We'll do this by sending a `DELETE` request to the route using Postman.
 
-Let's create a new request in Postman to test the route. Open Postman and create a new request with the following details:
+Open Postman and create a new request with the following details:
 
 - Use the drop-down menu to select `DELETE` as the method.
-- Enter the URL `http://localhost:3000/pets/<petId>` in the address bar. If you need to create some more pets, use the `Create Route` to create some pets.
+- Enter the URL `http://localhost:3000/pets/<petId>` in the address bar, where `<petId>` is a valid pet id that exists in your database. If you need to create some more pets, use the `Create Route` we built earlier to add them to the database.
 - Click the `Send` button to send the request.
 
-tktk Hunter - Can you take a screenshot of the Postman the above Postman request with highlights around where they need to change/fill in/click?
+[tktk Hunter - Can you take a screenshot of the Postman the above Postman request with highlights around where they need to change/fill in/click?]
 
 ### Test for Success
 
 After you have sent the request, you should receive a status code of `204` with no content in the response. This means the pet was successfully deleted from the database.
 
-tktk Hunter - Can you take a screenshot of the Postman response with highlights around the status code?
+[tktk Hunter - Can you take a screenshot of the Postman response with highlights around the status code?]
 
 ### Test for Error
 
 Let's test for an error. Send another `DELETE` request to the route, but this time use an `id` that does not exist in the database. Since we have just deleted a pet, we can use the same request again without changing anything to test for our `404` status code and error message.
 
-tktk Hunter - Can you take a screenshot of the Postman response with highlights around the status code and error message?
+[tktk Hunter - Can you take a screenshot of the Postman response with highlights around the status code and error message?]
 
-We can test the `500` status code by throwing a new error in the route. Let's add a new line of code to throw a new error in the route and test the route again.
+We can test the `500` status code by throwing a new error in the route. Let's add a new line of code to throw a new error in the route and test the route again:
 
 ```js
 // controllers/pets.js
@@ -72,6 +72,6 @@ router.delete('/:petId', async (req, res) => {
 
 Send a `DELETE` request to the route, and you should receive a status code of `500` with an error message in the response.
 
-tktk Hunter - Can you take a screenshot of the Postman response with highlights around the status code and error message?
+[tktk Hunter - Can you take a screenshot of the Postman response with highlights around the status code and error message?]
 
-If you have received something different in this testing process, debug before moving on. Remember to remove the line of code that throws the error before moving on.
+If you have received something different in this testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing! 

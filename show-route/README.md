@@ -1,6 +1,6 @@
 # ![Express REST API - Show Route](./assets/tktk-hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet by interacting with the database and send a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet by interacting with the database and sending a JSON response to the client.
 
 ## READ - Show Route
 
@@ -48,11 +48,11 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-Using Postman to test the route. Open Postman and send a `GET` request to `http://localhost:3000/pets/1`. You should receive a JSON response with the message `Show Route with the param 1`. If you do not receive this message, debug before moving on.
+Open Postman and send a `GET` request to `http://localhost:3000/pets/1`. You should receive a JSON response with the message `Show Route with the param 1`. If you do not receive this message, debug before moving on.
 
 ### Try - Find a Single Pet
 
-We have tested the route, so let's query the database and find a single pet. We can do this using the `.findById()` method on the `Pet` model. We will use `await` to wait for the database to return the pet. However, we need to wrap this in a `try...catch` block to handle any errors that may occur.
+We have tested the route, so let's query the database and find a single pet. We can do this using the `.findById()` method on the `Pet` model. We will use `await` to wait for the database to return the pet. We'll wrap this in a `try...catch` block to handle any errors that may occur.
 
 ```js
 // controllers/pets.js
@@ -69,11 +69,11 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-Like in our test above, we use the `req.params.petId` to access the `petId` parameter from the `req.params` object. However, we have to handle cases where the `petId` does not exist in the database. 
+Like in our test above, we use the `req.params.petId` to access the `petId` parameter from the `req.params` object. However, we still need to handle cases where the `petId` does not exist in the database. 
 
 In Mongoose, if a document is not found, the `.findById()` method will return `null` but not throw an error. We need to handle this case and send the client a `404` status code with a message.
 
-We can do this by checking if `foundPet` is `null`; we set the status to `404` and throw a new error with the message `Pet not found`.
+We can do this by checking if `foundPet` is `null` - if so, we set the status to `404` and throw a new error with the message `Pet not found`.
 
 ```js
 // controllers/pets.js
@@ -94,7 +94,7 @@ router.get('/:petId', async (req, res) => {
 });
 ```
 
-> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the function's execution. We can do this by throwing a new error with the `Pet not found` message. This will be caught in the `catch` block, and we can send a response to the client.
+> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the function's execution. We can do this by throwing a new error with the `Pet not found` message. This throw will be caught in the `catch` block, which sends a response to the client.
 
 ## Catch - Errors
 
@@ -141,13 +141,14 @@ router.get('/:petId', async (req, res) => {
         if (res.statusCode === 404) {
             res.json({ error: error.message });
         } else { // Add else statement to handle all other errors
-        res.status(500).json({ error: error.message });
+            res.status(500).json({ error: error.message });
         }
     }
 });
 ```
 
-We do this because if we do not, and let's say we have a database error, the client will receive a `200` status code with their error message. This is not good because the client can become confused and not know if they were successful.
+Returning a descriptive status code is very helpful, as without this step a client could receive a `200` status code ('OK') despite a server error. Now, any error message will be accompanied by a `500` status code (Internal Server Error) which clarifies for the client that their request was unsuccessful. This will also be semantically different from not being able to find the requested resource, which returns a `404`. 
+
 
 ## 🎓 You do: Test the Index Route with Postman
 
@@ -156,6 +157,6 @@ Use Postman to test the new route. Open Postman and send a `GET` request to `htt
 - **Success:** You should receive a JSON response with the pet that matches the `petId` parameter.
 - **Error**: You should receive a JSON response with an `error` key and a message describing the error.
 
-To get a `petId`, you can use the Index request to find all pets and use the `id` of one of the pets.
+To get a valid `petId`, you can use the Index request to find all pets and use the `id` of one of the pets.
 
-> 🧠 To test the `404` Not Found case, use a `petId` that does not exist in the database. You can do this by changing the last digit of the `petId` to a number that does not exist in the database.
+> 🧠 To test the `404` Not Found case, use a `petId` that does not exist in the database. You can do this by changing the last digit of the `petId` to a number that does not yet exist in the database.

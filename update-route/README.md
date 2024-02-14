@@ -1,6 +1,6 @@
 # ![Express REST API - Update Route](./assets/tktk-hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to update a single pet by interacting with the database and send a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a new route to update a single pet by interacting with the database and sending a JSON response to the client.
 
 ## UPDATE - Update Route
 
@@ -48,11 +48,11 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Using Postman to test the route. Open Postman and send a `PUT` request to `http://localhost:3000/pets/1`. You should receive a JSON response with the `Update Route with the param 1` message. If you do not receive this message, debug before moving on.
+Open Postman and send a `PUT` request to `http://localhost:3000/pets/1`. You should receive a JSON response with the `Update Route with the param 1` message. If you do not receive this message, debug before moving on.
 
 ### Try - Update a Single Pet
 
-We have tested the route, so let's query the database and update a single pet. We can use the `.findByIdAndUpdate()` method on the `Pet` model. We will use `await` to wait for the database to return the updated pet. Make sure we are still using the `try...catch` block to handle any errors that may occur.
+We have tested the route, so let's query the database and update a single pet. We can use the `.findByIdAndUpdate()` method on the `Pet` model. We'll use `await` to wait for the database to return the updated pet:
 
 ```js
 // controllers/pets.js
@@ -68,7 +68,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Even though we are working with the `.findByIdAndUpdate()` method, this method is similar to the `.findById()` method in which both return `null` if the pet is not found in the database. We must handle a `404` not found error if the pet is not in the database. Let's add this to the try block.
+The`.findByIdAndUpdate()` method is similar to the `.findById()` method in that both return `null` if the query is not found in the database. As a result, we have to handle a `404` not found error if the pet is not in the database. Let's add this to the try block:
 
 ```js
 // controllers/pets.js
@@ -88,7 +88,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Lastly, if we log the variable `foundPet` to the console, we will see the original pet before it was updated. We must add an additional argument to the `.findByIdAndUpdate()` method to return the updated pet. We can add `{ new: true }` as the third argument. Once added, we can send a JSON response with the updated pet.
+Lastly, if we log the variable `foundPet` to the console, we will see the original pet *before* it was updated. We need to add an additional argument to the `.findByIdAndUpdate()` method to return the *updated* pet. Adding `{ new: true }` as the third argument will give us the updated resource, instead of the original. Once added, we can send a JSON response with the updated pet:
 
 ```js
 // controllers/pets.js
@@ -138,3 +138,4 @@ router.put('/:petId', async (req, res) => {
 ```
 
 > 🧠 Remember we have to do the `if...else` statement because if any other error occurs, we want to set the status code to `500` and respond to the client with a message describing the error. If we do not change the status code, it will remain `200`, and the client might not know there was an error.
+
