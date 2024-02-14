@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - Setup](./assets/hero.png)
+# ![Express REST API - Setup](./assets/hero.png)
 
 ## Setup
 
