@@ -22,6 +22,7 @@ In this module, students will build a RESTful API using Express and MongoDB. The
 | [Show Route](./show-route/README.md) | Create a show route that returns JSON |
 | [Delete Route](./delete-route/README.md) | Create a delete route that returns JSON |
 | [Update Route](./update-route/README.md) | Create an update route that returns JSON |
+| [CORS](./cors/README.md) | Enable CORS for the API |
 
 
 ## References
