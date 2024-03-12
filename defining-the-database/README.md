@@ -11,7 +11,7 @@ mkdir models
 touch models/pet.js
 ```
 
-> We use a singular naming convention for model files, as a single file will always export just one model.
+> 💡 We use a singular naming convention for model files, as a single file will always export just one model.
 
 ## Create the pet schema
 
@@ -24,6 +24,7 @@ const mongoose = require('mongoose')
 ```
 
 Next we'll define the schema, which provides a consistent structure to our data. 
+
 In this case, our pet model will be pretty simple, with a `name` property of type `String`, an `age` property of type `Number`, and a `breed` property of type `String`. We'll also specify that name is a required field, and give `age` a minimum value of 0.  
 
 Here's how we'll define that in our pet.js file:
@@ -105,4 +106,3 @@ const Pet = require('../models/pet.js');
 ```
 
 That's it! Our model is set up and ready to be used in the request handling functions defined in our routes.
-

@@ -1,4 +1,4 @@
-# ![Express REST API - Show Route](./assets/tktk-hero.png)
+# ![Express REST API - Show Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet by interacting with the database and sending a JSON response to the client.
 

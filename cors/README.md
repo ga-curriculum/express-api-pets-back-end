@@ -1,4 +1,4 @@
-# ![Express REST API - CORS](./assets/tktk-hero.png)
+# ![Express REST API - CORS](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to implement Cross-Origin Resource Sharing (CORS) in an Express application to allow the API to be accessed by other domains.
 

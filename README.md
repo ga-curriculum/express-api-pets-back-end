@@ -1,4 +1,4 @@
-# ![[Express REST API]](./assets/tktk-hero.png)
+# ![Express REST API](./assets/hero.png)
 
 ## About
 
@@ -23,7 +23,6 @@ In this module, students will build a RESTful API using Express and MongoDB. The
 | [Delete Route](./delete-route/README.md) | Create a delete route that returns JSON |
 | [Update Route](./update-route/README.md) | Create an update route that returns JSON |
 | [CORS](./cors/README.md) | Enable CORS for the API |
-
 
 ## References
 

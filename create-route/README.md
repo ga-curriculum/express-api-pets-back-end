@@ -2,7 +2,7 @@
 
 **Learning objective:** By the end of this lesson, students will be able to create a new pet by interacting with the database and sending a JSON response to the client. 
 
-## CREATE - Create Route
+## CREATE - Create route
 
 In this section, we will make a new route to create a new pet. This route will be a `POST` request to `/pets`, and will return a JSON response with the created pet. 
 
@@ -119,7 +119,7 @@ router.post('/', async (req, res) => {
 });
 ```
 
-### Catch - Errors
+### Catch - errors
 
 Errors can occur in several places when querying the database. We need to handle these errors and send a response to the client that is easy to read and understand. Luckily, we have already set up a catch block in the `try...catch` statement. We can use this to catch any errors that might happen:
 
@@ -141,7 +141,7 @@ Inside the `error` object we will be given if anything is caught, there is a pro
 
 > The error object is an instance of the built-in Error class in JavaScript. It has many valuable properties, one of them being message. For a complete list of Error capabilities, check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
 
-## You Do: Test the Create Route with Postman
+## You Do: Test the create route with Postman
 
 Now that we have finished the route let's test it with Postman. We'll do this by sending a `POST` request to `http://localhost:3000/pets`. Recall that our pet schema has the following specifications:  
 
@@ -161,7 +161,7 @@ const petSchema = mongoose.Schema({
 
 Under the `Body` header, select `raw` and make sure the blue colored dropdown to the right is set to `JSON`. 
 
-[tktk graphic of these options] 
+![JSON dropdown](./assets/post-request.png)
 
 Your values will be different, but an example body would look something like this: 
 
@@ -177,4 +177,3 @@ Once you have the body composed, send a POST request to `http://localhost:3000/p
 
 - Success: You should receive a JSON response with the new pet object!
 - Error: You should receive a JSON response with an error message - most likely, that the `create()` failed due to bad form data. This message should describe the error that has occurred.
-

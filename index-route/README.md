@@ -1,4 +1,4 @@
-# ![[Express REST API] - Index Route](./assets/tktk-hero.png)
+# ![Express REST API - Index Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students can create an index route to find all pets by interacting with the database and send a JSON response to the client.
 
