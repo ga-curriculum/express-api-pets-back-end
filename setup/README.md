@@ -1,8 +1,9 @@
-# ![Express REST API - Setup](./assets/hero.png)
+# ![Express REST API - Pets - Setup](./assets/hero.png)
 
 ## Setup
 
 Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
+
 ```bash
 cd ~/code/ga/lectures
 ```
@@ -45,7 +46,7 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
-    console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+  console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
 app.use(express.json());
@@ -53,7 +54,7 @@ app.use(express.json());
 // Routes go here
 
 app.listen(3000, () => {
-    console.log('The express app is ready!');
+  console.log('The express app is ready!');
 });
 ```
 
@@ -63,7 +64,7 @@ Add your MongoDB URI to the `.env` file:
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/pets?retryWrites=true
 ```
 
-> If you are unsure of where to obtain your MongoDB URI, please refer to the MongoDB Atlas Setup Lab. 
+> If you are unsure of where to obtain your MongoDB URI, please refer to the MongoDB Atlas Setup Lab.
 
 Finally, run the server with `nodemon`:
 

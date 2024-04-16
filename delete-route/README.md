@@ -1,4 +1,4 @@
-# ![Express REST API - Delete Route](./assets/hero.png)
+# ![Express REST API - Pets - Delete Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a new route to delete a single pet by interacting with the database and sending a JSON response to the client.
 
@@ -60,13 +60,13 @@ We can test the `500` status code by throwing a new error in the route. Let's ad
 
 // DELETE - DELETE - /pets/:petId
 router.delete('/:petId', async (req, res) => {
-    try {
-        throw new Error('This is a test error'); // Add this line
+  try {
+    throw new Error('This is a test error'); // Add this line
 
-        // Try to delete a single pet code below here
-    } catch (error) {
-        // Catch block code below here
-    }
+    // Try to delete a single pet code below here
+  } catch (error) {
+    // Catch block code below here
+  }
 });
 ```
 
@@ -74,4 +74,4 @@ Send a `DELETE` request to the route, and you should receive a status code of `5
 
 ![500 error](./assets/500.png)
 
-If you have received something different in this testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing! 
+If you have received something different in this testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing!

@@ -1,4 +1,4 @@
-# ![Express REST API - Index Route](./assets/hero.png)
+# ![Express REST API - Pets - Index Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students can create an index route to find all pets by interacting with the database and send a JSON response to the client.
 
@@ -28,7 +28,7 @@ Inside `controllers/pets.js`, create a new route to find all pets. The **method*
 
 // READ - GET - /pets
 router.get('/', async (req, res) => {
-    // Setting up for our code
+  // Setting up for our code
 });
 ```
 
@@ -41,8 +41,8 @@ We must test the route before we can query the database to ensure it works. We c
 
 // READ - GET - /pets
 router.get('/', async (req, res) => {
-    // Add a message to test the route
-    res.json({ message: 'Index Route' });
+  // Add a message to test the route
+  res.json({ message: 'Index Route' });
 });
 ```
 
@@ -50,20 +50,20 @@ Let's use Postman to test the route. Open Postman and send a `GET` request to `h
 
 ### Try - Find All Pets
 
-We have tested the route, so let's query the database and find all pets. 
+We have tested the route, so let's query the database and find all pets.
 
 ```js
 // controllers/pets.js
 
 // READ - GET - /pets
 router.get('/', async (req, res) => {
-    try {
-        const foundPets = await Pet.find();
-        res.json({ pets: foundPets });
-    } catch (error) {
-        // Add error handling code
-        res.status(500).json({ error: error.message });
-    }
+  try {
+    const foundPets = await Pet.find();
+    res.json({ pets: foundPets });
+  } catch (error) {
+    // Add error handling code
+    res.status(500).json({ error: error.message });
+  }
 });
 ```
 

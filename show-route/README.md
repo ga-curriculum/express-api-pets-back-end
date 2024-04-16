@@ -1,4 +1,4 @@
-# ![Express REST API - Show Route](./assets/hero.png)
+# ![Express REST API - Pets - Show Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet by interacting with the database and sending a JSON response to the client.
 
@@ -28,7 +28,7 @@ Inside `controllers/pets.js`, create a new route to find a single pet. The **met
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    // Setting up for our code
+  // Setting up for our code
 });
 ```
 
@@ -43,8 +43,8 @@ Before moving on, we must test this route to ensure it works. We can do this by 
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    // Add a message to test the route
-    res.json({ message: `Show route with the param ${req.params.petId}` });
+  // Add a message to test the route
+  res.json({ message: `Show route with the param ${req.params.petId}` });
 });
 ```
 
@@ -59,17 +59,17 @@ We have tested the route, so let's query the database and find a single pet. We 
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    try {
-        // Add query to find a single pet
-        const foundPet = await Pet.findById(req.params.petId);
-        res.json({ pet: foundPet });
-    } catch (error) {
-       // Setup for error handling
-    }
+  try {
+    // Add query to find a single pet
+    const foundPet = await Pet.findById(req.params.petId);
+    res.json({ pet: foundPet });
+  } catch (error) {
+    // Setup for error handling
+  }
 });
 ```
 
-Like in our test above, we use the `req.params.petId` to access the `petId` parameter from the `req.params` object. However, we still need to handle cases where the `petId` does not exist in the database. 
+Like in our test above, we use the `req.params.petId` to access the `petId` parameter from the `req.params` object. However, we still need to handle cases where the `petId` does not exist in the database.
 
 In Mongoose, if a document is not found, the `.findById()` method will return `null` but not throw an error. We need to handle this case and send the client a `404` status code with a message.
 
@@ -80,17 +80,17 @@ We can do this by checking if `foundPet` is `null` - if so, we set the status to
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    try {
-        const foundPet = await Pet.findById(req.params.petId);
-        // Add error handling if a pet is not found
-        if (!foundPet) {
-            res.status(404);
-            throw new Error('Pet not found.');
-        }
-        res.json({ pet: foundPet });
-    } catch (error) {
-        // Setup for error handling
+  try {
+    const foundPet = await Pet.findById(req.params.petId);
+    // Add error handling if a pet is not found
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
     }
+    res.json({ pet: foundPet });
+  } catch (error) {
+    // Setup for error handling
+  }
 });
 ```
 
@@ -98,7 +98,7 @@ router.get('/:petId', async (req, res) => {
 
 ## Catch - Errors
 
-We have set up a `catch` block in the `try...catch` statement and coded for the case where a pet is not found. However, we need to handle any other errors that might occur. 
+We have set up a `catch` block in the `try...catch` statement and coded for the case where a pet is not found. However, we need to handle any other errors that might occur.
 
 First, we want to see if the error we are catching is a `404` status code. If this error occurs, we have already set the status code, so we just need to send a response to the client.
 
@@ -107,19 +107,19 @@ First, we want to see if the error we are catching is a `404` status code. If th
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    try {
-        const foundPet = await Pet.findById(req.params.petId);
-        if (!foundPet) {
-            res.status(404);
-            throw new Error('Pet not found.');
-        }
-        res.json({ pet: foundPet });
-    } catch (error) {
-        // Add error handling code for 404 errors
-        if (res.statusCode === 404) {
-            res.json({ error: error.message });
-        }
+  try {
+    const foundPet = await Pet.findById(req.params.petId);
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
     }
+    res.json({ pet: foundPet });
+  } catch (error) {
+    // Add error handling code for 404 errors
+    if (res.statusCode === 404) {
+      res.json({ error: error.message });
+    }
+  }
 });
 ```
 
@@ -130,25 +130,25 @@ Now, we need to handle any other errors that might occur. We can do this by sett
 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
-    try {
-        const foundPet = await Pet.findById(req.params.petId);
-        if (!foundPet) {
-            res.status(404);
-            throw new Error('Pet not found.');
-        }
-        res.json({ pet: foundPet });
-    } catch (error) {
-        if (res.statusCode === 404) {
-            res.json({ error: error.message });
-        } else { // Add else statement to handle all other errors
-            res.status(500).json({ error: error.message });
-        }
+  try {
+    const foundPet = await Pet.findById(req.params.petId);
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
     }
+    res.json({ pet: foundPet });
+  } catch (error) {
+    if (res.statusCode === 404) {
+      res.json({ error: error.message });
+    } else {
+      // Add else statement to handle all other errors
+      res.status(500).json({ error: error.message });
+    }
+  }
 });
 ```
 
-Returning a descriptive status code is very helpful, as without this step a client could receive a `200` status code ('OK') despite a server error. Now, any error message will be accompanied by a `500` status code (Internal Server Error) which clarifies for the client that their request was unsuccessful. This will also be semantically different from not being able to find the requested resource, which returns a `404`. 
-
+Returning a descriptive status code is very helpful, as without this step a client could receive a `200` status code ('OK') despite a server error. Now, any error message will be accompanied by a `500` status code (Internal Server Error) which clarifies for the client that their request was unsuccessful. This will also be semantically different from not being able to find the requested resource, which returns a `404`.
 
 ## 🎓 You do: Test the Index Route with Postman
 

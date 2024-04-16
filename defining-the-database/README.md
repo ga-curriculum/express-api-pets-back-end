@@ -1,6 +1,6 @@
-# ![Express REST API - Defining the Database](./assets/hero.png)
+# ![Express REST API - Pets - Defining the Database](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an API. 
+**Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an API.
 
 ## Create the model file `pet.js`
 
@@ -20,12 +20,12 @@ Before we're able to define our model, we must first import the mongoose library
 ```js
 // models/pet.js
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 ```
 
-Next we'll define the schema, which provides a consistent structure to our data. 
+Next we'll define the schema, which provides a consistent structure to our data.
 
-In this case, our pet model will be pretty simple, with a `name` property of type `String`, an `age` property of type `Number`, and a `breed` property of type `String`. We'll also specify that name is a required field, and give `age` a minimum value of 0.  
+In this case, our pet model will be pretty simple, with a `name` property of type `String`, an `age` property of type `Number`, and a `breed` property of type `String`. We'll also specify that name is a required field, and give `age` a minimum value of 0.
 
 Here's how we'll define that in our pet.js file:
 
@@ -56,7 +56,7 @@ const Pet = mongoose.model('Pet', petSchema);
 
 ## Export the model from the pet.js file
 
-Next, we'll want to export the `Pet` model we just created so that the rest of our application has access to it. 
+Next, we'll want to export the `Pet` model we just created so that the rest of our application has access to it.
 
 ```js
 // models/pet.js
@@ -64,7 +64,7 @@ Next, we'll want to export the `Pet` model we just created so that the rest of o
 module.exports = Pet;
 ```
 
-Our finished `pet.js` file will look like this: 
+Our finished `pet.js` file will look like this:
 
 ```js
 // models/pet.js
@@ -86,19 +86,18 @@ const petSchema = mongoose.Schema({
 const Pet = mongoose.model('Pet', petSchema);
 
 module.exports = Pet;
-
 ```
 
 ## Import the model
 
-Finally, we'll need the `Pet` model in many of our routes, so let's import it next. Similarly to our `models` directory, we'll be using a `controllers` directory to help keep a clear separation of concerns. Let's create that next: 
+Finally, we'll need the `Pet` model in many of our routes, so let's import it next. Similarly to our `models` directory, we'll be using a `controllers` directory to help keep a clear separation of concerns. Let's create that next:
 
 ```bash
 mkdir controllers
 touch controllers/pets.js
 ```
 
-In `controllers/pets.js`, so let's add an import statement to the top of that file: 
+In `controllers/pets.js`, so let's add an import statement to the top of that file:
 
 ```js
 // controllers/pets.js

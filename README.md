@@ -1,4 +1,4 @@
-# ![Express REST API](./assets/hero.png)
+# ![Express REST API - Pets](./assets/hero.png)
 
 ## About
 
@@ -12,17 +12,17 @@ In this module, students will build a RESTful API using Express and MongoDB. The
 
 ## Content
 
-| Lesson | Skills |
-| ------ | ------ |
-| [Setup](./setup/README.md) | Setting up the development environment |
-| [Concepts](./concepts/README.md) | Fundamentals of RESTful APIs |
-| [Defining the Database](./defining-the-database/README.md) | Define and export a mongoose model for use with an API.  |
-| [Create Route](./create-route/README.md) | Create a create route that returns JSON |
-| [Index Route](./index-route/README.md) | Create an index route that returns JSON |
-| [Show Route](./show-route/README.md) | Create a show route that returns JSON |
-| [Delete Route](./delete-route/README.md) | Create a delete route that returns JSON |
-| [Update Route](./update-route/README.md) | Create an update route that returns JSON |
-| [CORS](./cors/README.md) | Enable CORS for the API |
+| Lesson                                                     | Skills                                                  |
+| ---------------------------------------------------------- | ------------------------------------------------------- |
+| [Setup](./setup/README.md)                                 | Setting up the development environment                  |
+| [Concepts](./concepts/README.md)                           | Fundamentals of RESTful APIs                            |
+| [Defining the Database](./defining-the-database/README.md) | Define and export a mongoose model for use with an API. |
+| [Create Route](./create-route/README.md)                   | Create a create route that returns JSON                 |
+| [Index Route](./index-route/README.md)                     | Create an index route that returns JSON                 |
+| [Show Route](./show-route/README.md)                       | Create a show route that returns JSON                   |
+| [Delete Route](./delete-route/README.md)                   | Create a delete route that returns JSON                 |
+| [Update Route](./update-route/README.md)                   | Create an update route that returns JSON                |
+| [CORS](./cors/README.md)                                   | Enable CORS for the API                                 |
 
 ## References
 

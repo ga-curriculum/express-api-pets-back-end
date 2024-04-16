@@ -1,4 +1,4 @@
-# ![Express REST API - Update Route](./assets/hero.png)
+# ![Express REST API - Pets - Update Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a new route to update a single pet by interacting with the database and sending a JSON response to the client.
 
@@ -28,7 +28,7 @@ Let's create a new route to update a single pet. The **method** for this route i
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    // Setting up for our code
+  // Setting up for our code
 });
 ```
 
@@ -43,8 +43,8 @@ Before moving on, we must test this route to ensure it works. We can do this by 
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    // Add a message to test the route
-    res.json({ message: `Update route with the param ${req.params.petId}` });
+  // Add a message to test the route
+  res.json({ message: `Update route with the param ${req.params.petId}` });
 });
 ```
 
@@ -59,12 +59,12 @@ We have tested the route, so let's query the database and update a single pet. W
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    try {
-        // Add query to update a single pet
-        const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
-    } catch (error) {
-        // Setup for error handling
-    }
+  try {
+    // Add query to update a single pet
+    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+  } catch (error) {
+    // Setup for error handling
+  }
 });
 ```
 
@@ -75,38 +75,40 @@ The`.findByIdAndUpdate()` method is similar to the `.findById()` method in that 
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    try {
-        const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
-        // Add a check for a not found pet
-        if (!foundPet) {
-            res.status(404);
-            throw new Error('Pet not found.');
-        }
-    } catch (error) {
-        // Setup for error handling
+  try {
+    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+    // Add a check for a not found pet
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
     }
+  } catch (error) {
+    // Setup for error handling
+  }
 });
 ```
 
-Lastly, if we log the variable `foundPet` to the console, we will see the original pet *before* it was updated. We need to add an additional argument to the `.findByIdAndUpdate()` method to return the *updated* pet. Adding `{ new: true }` as the third argument will give us the updated resource, instead of the original. Once added, we can send a JSON response with the updated pet:
+Lastly, if we log the variable `foundPet` to the console, we will see the original pet _before_ it was updated. We need to add an additional argument to the `.findByIdAndUpdate()` method to return the _updated_ pet. Adding `{ new: true }` as the third argument will give us the updated resource, instead of the original. Once added, we can send a JSON response with the updated pet:
 
 ```js
 // controllers/pets.js
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    try {
-        // Add { new: true } as the third argument
-        const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, { new: true });
-        if (!foundPet) {
-            res.status(404);
-            throw new Error('Pet not found.');
-        }
-        // Add a JSON response with the updated pet
-        res.json({ pet: foundPet });
-    } catch (error) {
-        // Setup for error handling
+  try {
+    // Add { new: true } as the third argument
+    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
+      new: true,
+    });
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
     }
+    // Add a JSON response with the updated pet
+    res.json({ pet: foundPet });
+  } catch (error) {
+    // Setup for error handling
+  }
 });
 ```
 
@@ -119,23 +121,24 @@ We have set up a `catch` block in the `try...catch` statement and coded for the 
 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
-    try {
-        const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, { new: true });
-        if (!foundPet) {
-            res.status(404);
-            throw new Error('Pet not found.');
-        }
-        res.json({ pet: foundPet });
-    } catch (error) {
-        // Add code for errors
-        if (res.statusCode === 404) {
-            res.json({ error: error.message });
-        } else {
-            res.status(500).json({ error: error.message });
-        }
+  try {
+    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
+      new: true,
+    });
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
     }
+    res.json({ pet: foundPet });
+  } catch (error) {
+    // Add code for errors
+    if (res.statusCode === 404) {
+      res.json({ error: error.message });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
 });
 ```
 
 > 🧠 Remember we have to do the `if...else` statement because if any other error occurs, we want to set the status code to `500` and respond to the client with a message describing the error. If we do not change the status code, it will remain `200`, and the client might not know there was an error.
-

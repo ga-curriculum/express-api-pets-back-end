@@ -1,4 +1,4 @@
-# ![Express REST API - CORS](./assets/hero.png)
+# ![Express REST API - Pets - CORS](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to implement Cross-Origin Resource Sharing (CORS) in an Express application to allow the API to be accessed by other domains.
 
@@ -13,7 +13,6 @@ With the birth of AJAX we needed rules to govern how websites could interact wit
 Let's take this into the real world for a second. Think of Amazon or another large plateform. Amazon has a back end with many many many end points. Think of our application we just built but now enhance that to the size of Amazon. That is a lot of end points. Now think of all the different ways people can access Amazon. They can use the website, the mobile app, the Alexa app, the Echo, the Fire Stick, and so on. Each of these different ways to access Amazon is a different domain. So Amazon has to allow all of these different domains to access their resources.
 
 Now by default, browsers restrict cross-origin HTTP requests initiated from scripts. This means that if you try to make a request from a different domain, the browser will block the request. This is where CORS comes in. CORS allows the server to specify who can access its resources. This is done by adding a special header to the response that the server sends back to the client. This header is called `Access-Control-Allow-Origin`. This header tells the browser which domains are allowed to access the server's resources.
-
 
 ## Implement CORS in Express
 
@@ -50,4 +49,3 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 ```
 
 > 🧠 The `http://localhost:5173` is from the Vite React project but this can be changed to whatever we need to whitelist.
-
