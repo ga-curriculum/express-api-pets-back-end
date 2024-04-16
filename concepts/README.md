@@ -1,6 +1,6 @@
 # ![Express REST API - Pets - Concepts](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will understand RESTful APIs.
+**Learning objective:** By the end of this lesson, students will understand the purpose and route patterns for RESTful APIs.
 
 ## REST APIs
 

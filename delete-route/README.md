@@ -1,6 +1,6 @@
 # ![Express REST API - Pets - Delete Route](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to delete a single pet by interacting with the database and sending a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a route that deletes a single pet from the database and sends a confirmation as a JSON response to the client.
 
 ## DELETE - Delete Route
 
@@ -12,8 +12,8 @@ We will be following these specs when building the route:
 - **Method:** `DELETE`
 - **Path:** `/pets/:petId`
 - **Response:** No Content
-- **Success Status Code:** 204
-- **Error Status Code:** 404 || 500
+- **Success Status Code:** `204` No Content
+- **Error Status Code:** `404` Note Found || `500` Internal Server Error
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
 ## 🎓 You do: Create a DELETE route
@@ -31,7 +31,7 @@ Create a new route to delete a single pet. Using the above specs, create a new r
 
 ## Test the delete route with Postman
 
-We have created the route, so let's test it to ensure it works. We'll do this by sending a `DELETE` request to the route using Postman.
+Once you have created the route, test it to ensure it works. We'll do this by sending a `DELETE` request to the route using Postman.
 
 Open Postman and create a new request with the following details:
 
@@ -61,11 +61,10 @@ We can test the `500` status code by throwing a new error in the route. Let's ad
 // DELETE - DELETE - /pets/:petId
 router.delete('/:petId', async (req, res) => {
   try {
-    throw new Error('This is a test error'); // Add this line
-
-    // Try to delete a single pet code below here
+    throw new Error('This is a test error'); // Add this temporary code
+    // Try block
   } catch (error) {
-    // Catch block code below here
+    // Catch block
   }
 });
 ```
@@ -74,4 +73,4 @@ Send a `DELETE` request to the route, and you should receive a status code of `5
 
 ![500 error](./assets/500.png)
 
-If you have received something different in this testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing!
+If you encounter something different during the testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing!

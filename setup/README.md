@@ -8,11 +8,11 @@ Open your Terminal application and navigate to your `~/code/ga/lectures` directo
 cd ~/code/ga/lectures
 ```
 
-Make a new directory called `express-rest-api`, then enter this directory:
+Make a new directory called `express-rest-api-pets`, then enter this directory:
 
 ```bash
-mkdir express-rest-api
-cd express-rest-api
+mkdir express-rest-api-pets
+cd express-rest-api-pets
 ```
 
 Create `server.js`, `.env`, and `.gitignore` files:
@@ -21,20 +21,20 @@ Create `server.js`, `.env`, and `.gitignore` files:
 touch server.js .env .gitignore
 ```
 
-In the terminal, create a `package.json` with all of the default settings and install the packages by running the following commands:
+In the terminal, create a `package.json` with all of the default settings and install the required packages by running the following commands:
 
 ```bash
 npm init -y
 npm i express mongoose dotenv
 ```
 
-Open the contents of the directory in VS Code:
+Open the contents of the directory in your code editor:
 
 ```bash
 code .
 ```
 
-Add boilerplate code to the `server.js` file:
+Add the following boilerplate code to the `server.js` file:
 
 ```js
 const dotenv = require('dotenv');
@@ -72,4 +72,4 @@ Finally, run the server with `nodemon`:
 nodemon server.js
 ```
 
-We will be using Postman during this lesson to interact with our API. If you do not have Postman installed, please refer to the Postman Setup Lab.
+> We will be using Postman during this lesson to interact with our API. If you do not have Postman installed, please refer to the Postman Setup Lab.

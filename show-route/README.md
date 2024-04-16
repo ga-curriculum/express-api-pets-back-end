@@ -1,10 +1,10 @@
 # ![Express REST API - Pets - Show Route](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to find a single pet by interacting with the database and sending a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a route that retrieves a single pet by its `id` from the database and sends the pet's details as a JSON response to the client.
 
 ## READ - Show Route
 
-In this section, we will create a new route to find a single pet. This route will be a `GET` request to `/pets/:petId`, returning a JSON response with a single pet from the database.
+In this section, we will create a show route to find a single pet. This route will be a `GET` request to `/pets/:petId`, returning a JSON response with a single pet from the database.
 
 We will be following these specs when building the route:
 
@@ -12,9 +12,9 @@ We will be following these specs when building the route:
 - **Method:** `GET`
 - **Path:** `/pets/:petId`
 - **Response:** JSON
-- **Success Status Code:** 200
+- **Success Status Code:** `200` Ok
 - **Success Response Body:** A JSON object with the pet that matches the `petId` parameter.
-- **Error Status Code:** 404 || 500
+- **Error Status Code:** `404` Not Found || `500` Internal Server Error
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
 Let's get started! 🎉
@@ -36,7 +36,7 @@ Since we are already in the `/pets` route, we can use `/:petId` as the path. Thi
 
 ### Test the Route
 
-Before moving on, we must test this route to ensure it works. We can do this by sending a response with a message to the client.
+Before moving on, we should test the route to ensure it works. We can do this by sending a response with a message to the client.
 
 ```js
 // controllers/pets.js
@@ -62,7 +62,7 @@ router.get('/:petId', async (req, res) => {
   try {
     // Add query to find a single pet
     const foundPet = await Pet.findById(req.params.petId);
-    res.json({ pet: foundPet });
+    res.status(200).json({ pet: foundPet }); // 200 OK
   } catch (error) {
     // Setup for error handling
   }
@@ -87,14 +87,14 @@ router.get('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.json({ pet: foundPet });
+    res.status(200).json({ pet: foundPet });
   } catch (error) {
     // Setup for error handling
   }
 });
 ```
 
-> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the function's execution. We can do this by throwing a new error with the `Pet not found` message. This throw will be caught in the `catch` block, which sends a response to the client.
+> 📚 Since `res.status` just sets the status of the current response object, we need a way to stop the function's execution. We can do this by throwing a new error with the `Pet not found` message. This throw will be caught in the `catch` block, where we can send an error response to the client.
 
 ## Catch - Errors
 
@@ -113,7 +113,7 @@ router.get('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.json({ pet: foundPet });
+    res.status(200).json({ pet: foundPet });
   } catch (error) {
     // Add error handling code for 404 errors
     if (res.statusCode === 404) {
@@ -136,7 +136,7 @@ router.get('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.json({ pet: foundPet });
+    res.status(200).json({ pet: foundPet });
   } catch (error) {
     if (res.statusCode === 404) {
       res.json({ error: error.message });

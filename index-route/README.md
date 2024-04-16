@@ -1,6 +1,6 @@
 # ![Express REST API - Pets - Index Route](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students can create an index route to find all pets by interacting with the database and send a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create an index route to retrieve all pets from the database and send this data as a JSON response to the client.
 
 ## READ - Index Route
 
@@ -12,9 +12,9 @@ We will be following these specs when building the route:
 - **Method:** `GET`
 - **Path:** `/pets`
 - **Response:** JSON
-- **Success Status Code:** 200
+- **Success Status Code:** `200` Ok
 - **Success Response Body:** An array of all the pets in the database named `pets`. The array will be empty if there are no pets in the database.
-- **Error Status Code:** 500
+- **Error Status Code:** `500` Internal Server Error
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
 Let's get started! 🎉
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 
 ### Test the Route
 
-We must test the route before we can query the database to ensure it works. We can do this by sending a response with a message to the client.
+Test the route before adding a query to the database to ensure it works. We can do this by sending a response message to the client.
 
 ```js
 // controllers/pets.js
@@ -50,7 +50,7 @@ Let's use Postman to test the route. Open Postman and send a `GET` request to `h
 
 ### Try - Find All Pets
 
-We have tested the route, so let's query the database and find all pets.
+We have tested the route, so let's query the database and find all pets. Inside our controller function, we'll call `find()` on our `Pet` model. This returns all pets in the database. We'll then send a JSON response to the client with all pets.
 
 ```js
 // controllers/pets.js
@@ -59,17 +59,31 @@ We have tested the route, so let's query the database and find all pets.
 router.get('/', async (req, res) => {
   try {
     const foundPets = await Pet.find();
-    res.json({ pets: foundPets });
+    res.status(200).json({ pets: foundPets });  // 200 OK
   } catch (error) {
     // Add error handling code
-    res.status(500).json({ error: error.message });
   }
 });
 ```
 
-First, we set the status to `500` to indicate that an error has occurred. We need to change the status code from `200` to a meaningful status code if there is an error. Here, we can reach for the `500` internal server error. We are choosing `500` because the errors that would happen here are internal or errors that occur with no input from the client. Since this endpoint is not expecting any input from the client, we can assume that any errors that happen are internal.
+Be sure to include a status of `200 Ok` with your JSON response body.
 
-## 🎓 You do: Test the Index Route with Postman
+### Catch - errors
+
+Use the `error.message` object once again to send a meaningful response to the client. Include a `500` status to indicate that there was an internal error on the server side.
+
+```js
+router.get('/', async (req, res) => {
+  try {
+    const foundPets = await Pet.find();
+    res.status(200).json({ pets: foundPets });
+  } catch (error) {
+    res.status(500).json({ error: error.message }); // 500 Internal Server Error
+  }
+});
+```
+
+## 🎓 You do: Test the Index route with Postman
 
 Now that we have finished the route let's test it with Postman. Send a `GET` request to `http://localhost:3000/pets`. Test both **success** and **error** messages.
 

@@ -1,6 +1,6 @@
 # ![Express REST API - Pets - Update Route](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to update a single pet by interacting with the database and sending a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a route that updates the details of a single pet in the database and sends the updated pet information as a JSON response to the client.
 
 ## UPDATE - Update Route
 
@@ -12,9 +12,9 @@ We will be following these specs when building the route:
 - **Method:** `PUT`
 - **Path:** `/pets/:petId`
 - **Response:** JSON
-- **Success Status Code:** 200
+- **Success Status Code:** `200` Ok
 - **Success Response Body:** A JSON object with the updated pet.
-- **Error Status Code:** 404 || 500
+- **Error Status Code:** `404` Not Found || `500` Internal Server Error
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
 Let's get started! 🎉
@@ -36,7 +36,7 @@ router.put('/:petId', async (req, res) => {
 
 ### Test the Route
 
-Before moving on, we must test this route to ensure it works. We can do this by sending a response with a message to the client.
+Before moving on, we should test this route to ensure it works. We can do this by sending a response with a message to the client.
 
 ```js
 // controllers/pets.js
@@ -105,7 +105,7 @@ router.put('/:petId', async (req, res) => {
       throw new Error('Pet not found.');
     }
     // Add a JSON response with the updated pet
-    res.json({ pet: foundPet });
+    res.status(200).json({ pet: foundPet });
   } catch (error) {
     // Setup for error handling
   }
@@ -129,7 +129,7 @@ router.put('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.json({ pet: foundPet });
+    res.status(200).json({ pet: foundPet });
   } catch (error) {
     // Add code for errors
     if (res.statusCode === 404) {
