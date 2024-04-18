@@ -50,7 +50,7 @@ Let's use Postman to test the route. Open Postman and send a `GET` request to `h
 
 ### Try - Find All Pets
 
-We have tested the route, so let's query the database and find all pets. Inside our controller function, we'll call `find()` on our `Pet` model. This returns all pets in the database. We'll then send a JSON response to the client with all pets.
+We have tested the route, so let's query the database and find all pets. Inside our controller function, we'll call `find()` on our `Pet` model. This returns all pets in the database. We'll then send a JSON response to the client with the pets array.
 
 ```js
 // controllers/pets.js
@@ -59,7 +59,7 @@ We have tested the route, so let's query the database and find all pets. Inside 
 router.get('/', async (req, res) => {
   try {
     const foundPets = await Pet.find();
-    res.status(200).json({ pets: foundPets });  // 200 OK
+    res.status(200).json(foundPets);  // 200 OK
   } catch (error) {
     // Add error handling code
   }
@@ -76,7 +76,7 @@ Use the `error.message` object once again to send a meaningful response to the c
 router.get('/', async (req, res) => {
   try {
     const foundPets = await Pet.find();
-    res.status(200).json({ pets: foundPets });
+    res.status(200).json(foundPets);
   } catch (error) {
     res.status(500).json({ error: error.message }); // 500 Internal Server Error
   }

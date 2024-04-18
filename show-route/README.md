@@ -62,7 +62,7 @@ router.get('/:petId', async (req, res) => {
   try {
     // Add query to find a single pet
     const foundPet = await Pet.findById(req.params.petId);
-    res.status(200).json({ pet: foundPet }); // 200 OK
+    res.status(200).json(foundPet); // 200 OK
   } catch (error) {
     // Setup for error handling
   }
@@ -87,7 +87,7 @@ router.get('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.status(200).json({ pet: foundPet });
+    res.status(200).json(foundPet);
   } catch (error) {
     // Setup for error handling
   }
@@ -113,7 +113,7 @@ router.get('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.status(200).json({ pet: foundPet });
+    res.status(200).json(foundPet);
   } catch (error) {
     // Add error handling code for 404 errors
     if (res.statusCode === 404) {
@@ -136,7 +136,7 @@ router.get('/:petId', async (req, res) => {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.status(200).json({ pet: foundPet });
+    res.status(200).json(foundPet);
   } catch (error) {
     if (res.statusCode === 404) {
       res.json({ error: error.message });
