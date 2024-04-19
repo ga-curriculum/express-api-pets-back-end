@@ -102,7 +102,7 @@ The route works, but now we want to actually make use of it being a `POST` route
 
 ### Try - Create a new pet
 
-Inside our controller function, we'll call `create()` on our `Pet` model, and pass in `req.body`. Once the `pet` is created, we'll send a JSON response with the new `pet` object.
+Inside our controller function, we'll call `create()` on our `Pet` model, and pass in `req.body`. Once the `createdPet` is created, we'll send a JSON response with the new `createdPet` object.
 
 ```js
 // controllers/pets.js
@@ -111,8 +111,8 @@ Inside our controller function, we'll call `create()` on our `Pet` model, and pa
 router.post('/', async (req, res) => {
   try {
     // Create a new pet with the data from req.body
-    const pet = await Pet.create(req.body);
-    res.status(201).json({ pet }); // 201 Created
+    const createdPet = await Pet.create(req.body);
+    res.status(201).json(createdPet); // 201 Created
   } catch (error) {
     // Setup for error handling
   }
@@ -131,8 +131,8 @@ Errors can occur in several places when querying the database. We need to handle
 // CREATE - POST - /pets
 router.post('/', async (req, res) => {
   try {
-    const pet = await Pet.create(req.body);
-    res.status(201).json({ pet });
+    const createdPet = await Pet.create(req.body);
+    res.status(201).json(createdPet);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

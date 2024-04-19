@@ -61,7 +61,7 @@ We have tested the route, so let's query the database and update a single pet. W
 router.put('/:petId', async (req, res) => {
   try {
     // Add query to update a single pet
-    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+    const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
   } catch (error) {
     // Setup for error handling
   }
@@ -76,9 +76,9 @@ The`.findByIdAndUpdate()` method is similar to the `.findById()` method in that 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
   try {
-    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+    const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
     // Add a check for a not found pet
-    if (!foundPet) {
+    if (!updatedPet) {
       res.status(404);
       throw new Error('Pet not found.');
     }
@@ -88,7 +88,7 @@ router.put('/:petId', async (req, res) => {
 });
 ```
 
-Lastly, if we log the variable `foundPet` to the console, we will see the original pet _before_ it was updated. We need to add an additional argument to the `.findByIdAndUpdate()` method to return the _updated_ pet. Adding `{ new: true }` as the third argument will give us the updated resource, instead of the original. Once added, we can send a JSON response with the updated pet:
+Lastly, if we log the variable `updatedPet` to the console, we will see the original pet _before_ it was updated - as a result, our variable name is highly misleading! We need to add an additional argument to the `.findByIdAndUpdate()` method to return the _updated_ pet. Adding `{ new: true }` as the third argument will give us the updated resource, instead of the original. Once added, we can send a JSON response with the updated pet:
 
 ```js
 // controllers/pets.js
@@ -97,15 +97,15 @@ Lastly, if we log the variable `foundPet` to the console, we will see the origin
 router.put('/:petId', async (req, res) => {
   try {
     // Add { new: true } as the third argument
-    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
+    const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
       new: true,
     });
-    if (!foundPet) {
+    if (!updatedPet) {
       res.status(404);
       throw new Error('Pet not found.');
     }
     // Add a JSON response with the updated pet
-    res.status(200).json({ pet: foundPet });
+    res.status(200).json(updatedPet);
   } catch (error) {
     // Setup for error handling
   }
@@ -122,14 +122,14 @@ We have set up a `catch` block in the `try...catch` statement and coded for the 
 // UPDATE - PUT - /pets/:petId
 router.put('/:petId', async (req, res) => {
   try {
-    const foundPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
+    const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {
       new: true,
     });
-    if (!foundPet) {
+    if (!updatedPet) {
       res.status(404);
       throw new Error('Pet not found.');
     }
-    res.status(200).json({ pet: foundPet });
+    res.status(200).json(updatedPet);
   } catch (error) {
     // Add code for errors
     if (res.statusCode === 404) {
