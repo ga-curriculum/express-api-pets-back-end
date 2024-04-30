@@ -1,19 +1,20 @@
 # ![Express API - Pets Back-End - Delete Route](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create a new route to delete a single pet by interacting with the database and sending a JSON response to the client.
+**Learning objective:** By the end of this lesson, students will be able to create a route that deletes a single pet from the database and sends a confirmation as a JSON response to the client.
 
 ## DELETE - Delete Route
 
-In this section, we will create a new route to delete a single pet. This route will be a `DELETE` request to `/pets/:petId`, returning a status of `204` with no content.
+In this section, we will create a new route to delete a single pet. This route will be a `DELETE` request to `/pets/:petId`, returning a JSON response with the deleted pet.
 
 We will be following these specs when building the route:
 
 - **CRUD Action:** DELETE
 - **Method:** `DELETE`
 - **Path:** `/pets/:petId`
-- **Response:** No Content
-- **Success Status Code:** 204
-- **Error Status Code:** 404 || 500
+- **Response:** JSON
+- **Success Status Code:** `200` Ok
+- **Success Response Body:** A JSON object with the deleted pet.
+- **Error Status Code:** `404` Note Found || `500` Internal Server Error
 - **Error Response Body:** A JSON object with an `error` key and a message describing the error.
 
 ## 🎓 You do: Create a DELETE route
@@ -26,12 +27,12 @@ Create a new route to delete a single pet. Using the above specs, create a new r
 - Use the `.findByIdAndDelete()` method on the `Pet` model to delete a single pet from the database.
 - You will need a `try...catch` block to handle any errors that may occur.
 - You should handle a `404` status code if the pet is not in the database. Refer to the show route to see how to handle this.
-- The method `res.end()` can be chained with methods like `res.status()` to send a status code without having to use `res.json()`. Example: `res.status(204).end();`.
+- Send the deleted pet object in a JSON response. Attach a [`200`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE#responses) status code, as you've done previously.  
 - Make sure to set the status code to `500` and send an error message for any non `404` errors that occur.
 
 ## Test the delete route with Postman
 
-We have created the route, so let's test it to ensure it works. We'll do this by sending a `DELETE` request to the route using Postman.
+Once you have created the route, test it to ensure it works. We'll do this by sending a `DELETE` request to the route using Postman.
 
 Open Postman and create a new request with the following details:
 
@@ -43,9 +44,7 @@ Open Postman and create a new request with the following details:
 
 ### Test for success
 
-After you have sent the request, you should receive a status code of `204` with no content in the response. This means the pet was successfully deleted from the database.
-
-![204 status](./assets/204.png)
+After you have sent the request, you should receive a status code of `200` with the deleted pet object in the response. This means the pet was successfully deleted from the database.
 
 ### Test for error
 
@@ -60,13 +59,12 @@ We can test the `500` status code by throwing a new error in the route. Let's ad
 
 // DELETE - DELETE - /pets/:petId
 router.delete('/:petId', async (req, res) => {
-    try {
-        throw new Error('This is a test error'); // Add this line
-
-        // Try to delete a single pet code below here
-    } catch (error) {
-        // Catch block code below here
-    }
+  try {
+    throw new Error('This is a test error'); // Add this temporary code
+    // Try block
+  } catch (error) {
+    // Catch block
+  }
 });
 ```
 
@@ -74,4 +72,4 @@ Send a `DELETE` request to the route, and you should receive a status code of `5
 
 ![500 error](./assets/500.png)
 
-If you have received something different in this testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing! 
+If you encounter something different during the testing process, debug before moving on. Remember to remove the line of code that throws the error when you're done with testing!
