@@ -1,4 +1,4 @@
-# ![Express REST API - Pets - Setup](./assets/hero.png)
+# ![Express API - Pets Back-End - Setup](./assets/hero.png)
 
 ## Setup
 

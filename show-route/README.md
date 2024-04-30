@@ -1,4 +1,4 @@
-# ![Express REST API - Pets - Show Route](./assets/hero.png)
+# ![Express API - Pets Back-End - Show Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that retrieves a single pet by its `id` from the database and sends the pet's details as a JSON response to the client.
 

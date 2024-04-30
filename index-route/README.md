@@ -1,4 +1,4 @@
-# ![Express REST API - Pets - Index Route](./assets/hero.png)
+# ![Express API - Pets Back-End - Index Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create an index route to retrieve all pets from the database and send this data as a JSON response to the client.
 

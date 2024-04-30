@@ -1,4 +1,4 @@
-# ![Express REST API - Pets - Delete Route](./assets/hero.png)
+# ![Express API - Pets Back-End - Delete Route](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that deletes a single pet from the database and sends a confirmation as a JSON response to the client.
 
