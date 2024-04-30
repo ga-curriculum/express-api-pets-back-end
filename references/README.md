@@ -1,4 +1,4 @@
-# ![Express REST API - References](./assets/hero.png)
+# ![Express API - Pets Back-End - References](./assets/hero.png)
 
 ## Lesson references
 

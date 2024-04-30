@@ -1,4 +1,4 @@
-# ![Express REST API - Concepts](./assets/hero.png)
+# ![Express API - Pets Back-End - Concepts](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will understand RESTful APIs.
 

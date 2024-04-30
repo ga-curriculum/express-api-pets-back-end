@@ -1,1 +1,1 @@
-# ![Express REST API](../assets/hero.png)
+# ![Express API - Pets Back-End](../assets/hero.png)
