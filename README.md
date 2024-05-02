@@ -2,7 +2,7 @@
 
 ## About
 
-In this module, you will practice the fundamental operations of creating, reading, updating, and deleting data (CRUD) using the Mongoose ODM library. You will also explore how to manage cross-origin resource sharing (CORS), enabling your API to safely interact with resources from different domains. Additionally, you'll practice testing your API with Postman to ensure it performs consistently across various scenarios. By the end of this module, you will have the skills needed to develop and manage a functional API.
+In this module, students will practice the fundamental operations of creating, reading, updating, and deleting data (CRUD) using the Mongoose ODM library with Express. They will explore techniques for managing cross-origin resource sharing (CORS), allowing their APIs to safely interact with resources from various domains. Additionally, they will gain hands-on practice with Postman to test API functionality under different scenarios. By the end of this module, students will be equipped with the essential skills to develop and maintain a fully functional API in Express.
 
 ## Prerequisites
 
