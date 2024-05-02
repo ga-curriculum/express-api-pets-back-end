@@ -29,6 +29,10 @@ In this module, students will practice the fundamental operations of creating, r
 
 📖 [Reference Materials](./references/README.md)
 
+## Solution code
+
+🏁 [Solution code](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-pets-back-end-solution)
+
 ## Internal resources
 
 ✏️ [Instructor Guide](./internal-resources/instructor-guide.md)
