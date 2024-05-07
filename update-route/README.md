@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # ![Express API - Pets Back-End - Update Route](./assets/hero.png)
-=======
-# ![Express REST API - Pets - Update Route](./assets/hero.png)
->>>>>>> main
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that updates the details of a single pet in the database and sends the updated pet information as a JSON response to the client.
 
