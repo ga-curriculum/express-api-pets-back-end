@@ -19,7 +19,35 @@ We will be following these specs when building the route:
 
 ## Creating a POST route
 
-The purpose of this route is to handle data that is sent along with a form submission. Before we can start writing the route and controller function, we need to make a few additions to our existing code. In `server.js`, let's import the `pets` router file and add it to our `/pets` route.
+This route will handle data sent when users submit a form. Before we can start writing the route and controller function, we need to make a few additions to our existing code.
+
+We need to import the `express` package in the pets controller and create a `router` to attach our routes to.
+
+```js
+// controllers/pets.js
+
+// Add these at the top of the file:
+const Pet = require('../models/pet.js');
+const express = require('express');
+const router = express.Router();
+```
+
+Export the `router` at the bottom of the file:
+
+```js
+// controllers/pets.js
+
+const Pet = require('../models/pet.js');
+const express = require('express');
+const router = express.Router();
+
+// Write your routes/controller functions here
+
+// Export the router at the bottom of the file
+module.exports = router;
+```
+
+Then, in `server.js`, import the `pets` router file and add it to our `/pets` route.
 
 ```js
 // server.js
@@ -50,18 +78,6 @@ app.listen(3000, () => {
 ```
 
 Great, now all of our routes can be handled in `controllers/pets.js`!
-
-Just one more step - we need to import `express` so that we can make use of express methods:
-
-```js
-// controllers/pets.js
-
-// Add these at the top of the file:
-const express = require('express');
-const router = express.Router();
-
-const Pet = require('../models/pet.js');
-```
 
 ## Define the route
 
