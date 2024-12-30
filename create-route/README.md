@@ -1,4 +1,7 @@
-# ![Express API - Pets Back-End - Create Route](./assets/hero.png)
+<h1>
+  <span class="headline">Pets Back-End</span>
+  <span class="subhead">Create Route</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create a new pet by POSTing to the database and sending a JSON response to the client.
 
@@ -15,7 +18,7 @@ We will be following these specs when building the route:
 - Success Status Code: `201` Created
 - Success Response Body: A new Pet object
 - Error Status Code: `500` Internal Server Error
-- Error Response Body: A JSON object with an error key and a message describing the error
+- Error Response Body: A JSON object with an `err` key and a message describing the error
 
 ## Creating a POST route
 
@@ -110,7 +113,7 @@ router.post('/', async (req, res) => {
 
 Open Postman and send a POST request to `http://localhost:3000/pets`. You should receive a JSON response with the message Create Route. If you do not receive this message, debug before moving on.
 
-> 📚 If you are having trouble, check the terminal for error messages. Sometimes, the issue is simply that the server is not running.
+> 📚 If you are having trouble, check the terminal for error messages. Check that the server is running too!
 
 ## Making a post request
 
@@ -129,7 +132,7 @@ router.post('/', async (req, res) => {
     // Create a new pet with the data from req.body
     const createdPet = await Pet.create(req.body);
     res.status(201).json(createdPet); // 201 Created
-  } catch (error) {
+  } catch (err) {
     // Setup for error handling
   }
 });
@@ -149,15 +152,15 @@ router.post('/', async (req, res) => {
   try {
     const createdPet = await Pet.create(req.body);
     res.status(201).json(createdPet);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```
 
-Inside the `error` object there is a property called `message`. This is a string that describes the error that has occurred. We can use this to send a meaningful response to the client. Include a `500` status to indicate that there was an internal error on the server side.
+Inside the `err` object there is a property called `message`. This is a string that describes the error that has occurred. We can use this to send a meaningful response to the client. Include a `500` status to indicate that there was an internal error on the server side.
 
-> The error object is an instance of the built-in Error class in JavaScript. It has many valuable properties, one of them being message. For a complete list of Error capabilities, check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
+> The `err` object is an instance of the built-in Error class in JavaScript. It has many valuable properties, one of them being `message`. For a complete list of Error capabilities, check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
 
 ## 🎓 You Do: Test the create route with Postman
 

@@ -1,4 +1,7 @@
-# ![Express API - Pets Back-End - Setup](./assets/hero.png)
+<h1>
+  <span class="headline">Pets Back-End</span>
+  <span class="subhead">Setup</span>
+</h1>
 
 ## Setup
 
@@ -8,11 +11,11 @@ Open your Terminal application and navigate to your `~/code/ga/lectures` directo
 cd ~/code/ga/lectures
 ```
 
-Make a new directory called `express-rest-api-pets`, then enter this directory:
+Make a new directory called `express-api-pets-back-end`, then enter this directory:
 
 ```bash
-mkdir express-rest-api-pets
-cd express-rest-api-pets
+mkdir express-api-pets-back-end
+cd express-api-pets-back-end
 ```
 
 Create `server.js`, `.env`, and `.gitignore` files:
@@ -60,7 +63,7 @@ app.listen(3000, () => {
 
 Add your MongoDB URI to the `.env` file:
 
-```bash
+```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/pets?retryWrites=true
 ```
 

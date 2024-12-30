@@ -1,4 +1,7 @@
-# ![Express API - Pets Back-End - Show Route](./assets/hero.png)
+<h1>
+  <span class="headline">Pets Back-End</span>
+  <span class="subhead">Show Route</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that retrieves a single pet by its `id` from the database and sends the pet's details as a JSON response to the client.
 
@@ -15,7 +18,7 @@ We will be following these specs when building the route:
 - **Success Status Code:** `200` Ok
 - **Success Response Body:** A JSON object with the pet that matches the `petId` parameter.
 - **Error Status Code:** `404` Not Found || `500` Internal Server Error
-- **Error Response Body:** A JSON object with an `error` key and a message describing the error.
+- **Error Response Body:** A JSON object with an `err` key and a message describing the error.
 
 Let's get started! 🎉
 
@@ -63,7 +66,7 @@ router.get('/:petId', async (req, res) => {
     // Add query to find a single pet
     const foundPet = await Pet.findById(req.params.petId);
     res.status(200).json(foundPet); // 200 OK
-  } catch (error) {
+  } catch (err) {
     // Setup for error handling
   }
 });
@@ -88,7 +91,7 @@ router.get('/:petId', async (req, res) => {
       throw new Error('Pet not found.');
     }
     res.status(200).json(foundPet);
-  } catch (error) {
+  } catch (err) {
     // Setup for error handling
   }
 });
@@ -114,10 +117,10 @@ router.get('/:petId', async (req, res) => {
       throw new Error('Pet not found.');
     }
     res.status(200).json(foundPet);
-  } catch (error) {
+  } catch (err) {
     // Add error handling code for 404 errors
     if (res.statusCode === 404) {
-      res.json({ error: error.message });
+      res.json({ err: err.message });
     }
   }
 });
@@ -137,12 +140,12 @@ router.get('/:petId', async (req, res) => {
       throw new Error('Pet not found.');
     }
     res.status(200).json(foundPet);
-  } catch (error) {
+  } catch (err) {
     if (res.statusCode === 404) {
-      res.json({ error: error.message });
+      res.json({ err: err.message });
     } else {
       // Add else statement to handle all other errors
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ err: err.message });
     }
   }
 });
@@ -155,7 +158,7 @@ Returning a descriptive status code is very helpful, as without this step a clie
 Use Postman to test the new route. Open Postman and send a `GET` request to `http://localhost:3000/pets/<petId>`. Test both **success** and **error** cases.
 
 - **Success:** You should receive a JSON response with the pet that matches the `petId` parameter.
-- **Error**: You should receive a JSON response with an `error` key and a message describing the error.
+- **Error**: You should receive a JSON response with an `err` key and a message describing the error.
 
 To get a valid `petId`, you can use the Index request to find all pets and use the `id` of one of the pets.
 

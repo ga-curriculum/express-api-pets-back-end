@@ -1,4 +1,7 @@
-# ![Express API - Pets Back-End - Concepts](./assets/hero.png)
+<h1>
+  <span class="headline">Pets Back-End</span>
+  <span class="subhead">Concepts</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will understand the purpose and route patterns for RESTful APIs.
 
@@ -18,4 +21,4 @@ For this lesson, we'll be creating a RESTful API that handles [CRUD](https://dev
 | GET         | `index`     | 200      | `/pets`        | List pets        |
 | GET         | `show`      | 200      | `/pets/:petId` | Get a single pet |
 | PUT         | `update`    | 200      | `/pets/:petId` | Update a pet     |
-| DELETE      | `deletePet` | 204      | `/pets/:petId`  | Delete a pet     |
+| DELETE      | `deletePet` | 204      | `/pets/:petId` | Delete a pet     |

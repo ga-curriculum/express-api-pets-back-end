@@ -1,4 +1,7 @@
-# ![Express API - Pets Back-End - Index Route](./assets/hero.png)
+<h1>
+  <span class="headline">Pets Back-End</span>
+  <span class="subhead">Index Route</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create an index route to retrieve all pets from the database and send this data as a JSON response to the client.
 
@@ -15,7 +18,7 @@ We will be following these specs when building the route:
 - **Success Status Code:** `200` Ok
 - **Success Response Body:** An array of all the pets in the database named `pets`. The array will be empty if there are no pets in the database.
 - **Error Status Code:** `500` Internal Server Error
-- **Error Response Body:** A JSON object with an `error` key and a message describing the error.
+- **Error Response Body:** A JSON object with an `err` key and a message describing the error.
 
 Let's get started! 🎉
 
@@ -60,7 +63,7 @@ router.get('/', async (req, res) => {
   try {
     const foundPets = await Pet.find();
     res.status(200).json(foundPets);  // 200 OK
-  } catch (error) {
+  } catch (err) {
     // Add error handling code
   }
 });
@@ -70,15 +73,15 @@ Be sure to include a status of `200 Ok` with your JSON response body.
 
 ### Catch - errors
 
-Use the `error.message` object once again to send a meaningful response to the client. Include a `500` status to indicate that there was an internal error on the server side.
+Use the `err.message` object once again to send a meaningful response to the client. Include a `500` status to indicate that there was an internal error on the server side.
 
 ```js
 router.get('/', async (req, res) => {
   try {
     const foundPets = await Pet.find();
     res.status(200).json(foundPets);
-  } catch (error) {
-    res.status(500).json({ error: error.message }); // 500 Internal Server Error
+  } catch (err) {
+    res.status(500).json({ err: err.message }); // 500 Internal Server Error
   }
 });
 ```

@@ -1,4 +1,7 @@
-# ![Express API - Pets Back-End - Defining the Database](./assets/hero.png)
+<h1>
+  <span class="headline">Pets Back-End</span>
+  <span class="subhead">Defining the Database</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an API.
 
@@ -25,7 +28,7 @@ const mongoose = require('mongoose');
 
 Next we'll define the schema, which provides a consistent structure to our data.
 
-In this case, our pet model will be pretty simple, with a `name` property of type `String`, an `age` property of type `Number`, and a `breed` property of type `String`. We'll also specify that name is a required field, and give `age` a minimum value of 0.
+In this case, our pet model will be pretty simple, with a `name` property of type `String`, an `age` property of type `Number`, and a `breed` property of type `String`. We'll also specify that `name` and `age` are required fields, and give `age` a minimum value of 0.
 
 Here's how we'll define that in our `pet.js` file:
 
@@ -40,6 +43,7 @@ const petSchema = mongoose.Schema({
   age: {
     type: Number,
     min: 0,
+    required: true,
   },
   breed: String,
 });
